@@ -34,7 +34,8 @@ import time
 # --- 2. Chargement et prétraitement du Dataset ---
 @st.cache_data
 def load_data():
-    df = pd.read_csv("UNSW_NB15_training-set.csv")
+    file_path = "https://drive.google.com/uc?export=download&id=1n9K_27iuLb_Ljz69d3YMRe6R5HHzwpWD"
+    df = pd.read_csv(file_path, on_bad_lines='skip', engine='python') # Added on_bad_lines='skip' and engine='python'
     cols_to_drop = ['id', 'attack_cat', 'proto', 'service', 'state']
     df.drop(columns=cols_to_drop, inplace=True, errors='ignore')
     df['label'] = LabelEncoder().fit_transform(df['label'])
