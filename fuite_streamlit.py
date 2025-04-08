@@ -30,16 +30,21 @@ from matplotlib.backends.backend_pdf import PdfPages
 
 import streamlit as st
 import time
+import gdown
 
 # --- 2. Chargement et prétraitement du Dataset ---
 @st.cache_data
 def load_data():
-    file_path = "https://drive.google.com/uc?export=download&id=1n9K_27iuLb_Ljz69d3YMRe6R5HHzwpWD"
-    df = pd.read_csv(file_path, on_bad_lines='skip', engine='python') # Added on_bad_lines='skip' and engine='python'
+    url = "https://drive.google.com/uc?id=1n9K_27iuLb_Ljz69d3YMRe6R5HHzwpWD"
+    output = "UNSW_NB15_training-set.csv"
+    gdown.download(url, output, quiet=False)
+
+    df = pd.read_csv(output)
     cols_to_drop = ['id', 'attack_cat', 'proto', 'service', 'state']
     df.drop(columns=cols_to_drop, inplace=True, errors='ignore')
     df['label'] = LabelEncoder().fit_transform(df['label'])
     return df
+
 
 df = load_data()
 X = df.drop('label', axis=1)
