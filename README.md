@@ -29,7 +29,7 @@ Cette solution permet d'identifier des anomalies dans des flux de données rése
 📁 fuite-de-donnees/
 ├── fuite_streamlit.py          # Script principal de l'application Streamlit
 ├── requirements.txt            # Liste des dépendances à installer
-├── UNSW_NB15_training-set.csv  # Jeu de données réseau pour l'entraînement
+├── https://drive.google.com/file/d/1n9K_27iuLb_Ljz69d3YMRe6R5HHzwpWD/view?usp=sharing  # Jeu de données réseau pour l'entraînement
 └── README.md                   # Ce fichier
 ```
 
